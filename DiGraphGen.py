@@ -4,6 +4,7 @@ import csv
 
 G2 = nx.DiGraph()   # 创建图
 # 读取csv文件
+print("Reading input")
 with open('data.csv', 'rt') as csvfile:
     reader = csv.DictReader(csvfile)
     nodes1 = [row['source'] for row in reader]
@@ -20,6 +21,7 @@ for element in nodes1:
     G2.add_node(i, desc=element)
 
 # 基于节点连接建立序号连接图
+print("Graph Generating")
 with open('data.csv', 'rt') as f:
     reader = csv.reader(f)
 
@@ -53,5 +55,7 @@ nx.draw_networkx_edge_labels(G2, pos, edge_labels=edge_labels)
 #   高亮处理
 nx.draw_networkx_edges(G2, pos, edgelist=HighLight, edge_color='m', width=2)
 
+print("Graph Generated Successfully")
 plt.savefig('./DiGraph.pdf')
+print("Graph Saved")
 plt.show()
